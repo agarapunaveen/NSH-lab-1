@@ -70,9 +70,6 @@ jobs:
    - name: plan terraform
      run: terraform plan -out=tfplan
      
-   - name: apply terraforms
-     run: terraform apply -auto-approve tfplan
-     
    - name: Render terraform docs and push changes back to PR
      if: ${{ github.event_name == 'pull_request' }}
      uses: terraform-docs/gh-actions@main
