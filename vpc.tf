@@ -59,7 +59,7 @@ resource "aws_security_group" "rds" {
 }
 
 
-resource "aws_db_subnet_group" "default" {
+/* resource "aws_db_subnet_group" "default" {
   name        = "main-db-subnet-group-1"
   description = "Database subnet group"
   subnet_ids  = [aws_subnet.private_1.id, aws_subnet.private_2.id]
@@ -67,7 +67,7 @@ resource "aws_db_subnet_group" "default" {
   tags = {
     Name = "main-db-subnet-group"
   }
-}
+} */
 
 # Create DB Subnet Group
 
