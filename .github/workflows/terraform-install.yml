@@ -45,10 +45,19 @@ jobs:
    # - name: install docs
    #   run: sudo snap install terraform-docs
    # - name: select terraform workspaces
+   - name: check if workspace exists or not
+     run: |
+      workspace_new="${{  github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev && 'dev' || 'dev' }}" 
+      terraform workspace list | grep -w "$workspace_new" || terraform workspace new "$workspace_name"
+     id: create_workspace
+     
    - name: Select Terraform Workspace 
      run: | 
-      terraform workspace show 
-      terraform workspace select ${{ github.event.inputs.environment || 'dev' }} || terraform workspace new ${{ github.event.inputs.environment }}
+       workspace_new="${{  github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev && 'dev' || 'dev' }}" 
+       terraform workspace select "$workspace_name"
+     id: select_workspace  
+      # terraform workspace show 
+      # terraform workspace select ${{ github.event.inputs.environment || 'dev' }} || terraform workspace new ${{ github.event.inputs.environment }}
      # run: |
       # terraform workspace new dev
       # terraform workspace new prod
