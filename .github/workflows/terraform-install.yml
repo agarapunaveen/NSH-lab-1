@@ -12,8 +12,7 @@ on:
      - dev
      - prod
      - staging
-    run: echo "${{ github.event.inputs.environments }} 
-   
+    
 jobs:
  build-job:
   runs-on: ubuntu-latest
@@ -42,7 +41,9 @@ jobs:
       aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
       aws-region: us-east-1
    - name: initialize terraform
-     run: terraform init
+     run: |
+      terraform init
+      echo "choosen environment is ${{ env.environment }} "
    # - name: install docs
    #   run: sudo snap install terraform-docs
    # - name: select terraform workspaces
