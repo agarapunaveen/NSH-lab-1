@@ -3,7 +3,7 @@ run-name: terraform install
 on:
  workflow_dispatch:
   inputs:
-   environments:
+   environment:
     description: 'please select the environments'
     default: dev
     required: true
