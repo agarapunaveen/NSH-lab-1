@@ -68,7 +68,7 @@ jobs:
       # terraform workspace new prod
       # terraform workspace select ${{ github.event.inputs.environment }}
    - name: plan terraform
-     run: terraform plan -out=tfplan
+     run: terraform plan -out=tfplan -var-file= ${{ github.event.inputs.environment }}.tfvars
      
    - name: Render terraform docs and push changes back to PR
      if: ${{ github.event_name == 'pull_request' }}
