@@ -5,7 +5,9 @@ on:
   inputs:
    name:
    description: 'please select the environments'
-   types:
+   required: true
+   default: dev
+   options:
     - dev
     - prod
   
