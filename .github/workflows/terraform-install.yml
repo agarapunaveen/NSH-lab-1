@@ -11,7 +11,7 @@ on:
     options:
      - dev
      - prod
-  
+     - staging
    
 jobs:
  build-job:
