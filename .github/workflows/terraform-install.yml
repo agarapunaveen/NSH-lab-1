@@ -47,13 +47,16 @@ jobs:
    # - name: select terraform workspaces
    - name: check if workspace exists or not
      run: |
-      workspace_new="${{ github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev' && 'dev' || 'dev' }}" 
+      workspace_new="${{ github.event.inputs.environment == 'dev' || 'dev' &&  github.event.inputs.environment == 'prod' || 'prod' }}" 
+      # workspace_new="${{ github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev' && 'dev' || 'dev' }}" 
       terraform workspace list | grep -w "$workspace_new" || terraform workspace new "$workspace_new"
      id: create_workspace
      
    - name: Select Terraform Workspace 
      run: | 
-       workspace_new="${{ github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev' && 'dev' || 'dev' }}" 
+      workspace_new="${{ github.event.inputs.environment == 'dev' || 'dev' &&  github.event.inputs.environment == 'prod' || 'prod' }}" 
+     
+       # workspace_new="${{ github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev' && 'dev' || 'dev' }}" 
        terraform workspace select "$workspace_new"
      id: select_workspace  
       # terraform workspace show 
