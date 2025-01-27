@@ -72,7 +72,7 @@ resource "aws_db_subnet_group" "default" {
 # Create DB Subnet Group
 
 
-resource "aws_db_instance" "main" {
+/* resource "aws_db_instance" "main" {
   identifier        = "main-db-instance"
   engine            = "mysql"
   engine_version    = "8.0"
@@ -95,4 +95,4 @@ resource "aws_db_instance" "main" {
   tags = {
     Name = "main-db-instance"
   }
-}
+} */
