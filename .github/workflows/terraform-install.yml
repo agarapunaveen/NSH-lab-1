@@ -1,12 +1,15 @@
 name: terraform initialization
 run-name: terraform install
 on:
- push:
-  branches:
-   - main
- pull_request:
-  branches:
-   - main
+ workflow_dispatch:
+  inputs:
+   name:
+   description: 'please select the environments'
+   types:
+    - dev
+    - prod
+  
+   
 jobs:
  build-job:
   runs-on: ubuntu-latest
