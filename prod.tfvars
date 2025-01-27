@@ -1,5 +1,3 @@
 variable instance_type{
-default={
-
-}
+default= "t3.medium"
 }
