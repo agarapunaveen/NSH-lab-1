@@ -12,6 +12,7 @@ on:
      - dev
      - prod
      - staging
+    run: echo "${{ github.event.inputs.environments }} 
    
 jobs:
  build-job:
