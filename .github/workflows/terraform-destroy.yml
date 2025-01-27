@@ -1,6 +1,16 @@
 name: terraform destroy
 on:
  workflow_dispatch:
+  inputs:
+   environments:
+    description: 'please select the environments'
+    default: dev
+    required: true
+    type: choice
+    options:
+     - dev
+     - prod
+  
 jobs:
  terraform-cleanup:
   runs-on: ubuntu-latest
