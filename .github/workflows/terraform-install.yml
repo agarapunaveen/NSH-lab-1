@@ -5,6 +5,7 @@ on:
   inputs:
    environments:
     description: 'please select the environments'
+    default: dev
     required: true
     type: choice
     options:
@@ -47,7 +48,7 @@ jobs:
    - name: Select Terraform Workspace 
      run: | 
       terraform workspace show 
-      terraform workspace select ${{ github.event.inputs.environment }} || terraform workspace new ${{ github.event.inputs.environment }}
+      terraform workspace select ${{ github.event.inputs.environment || 'dev' }} || terraform workspace new ${{ github.event.inputs.environment }}
      # run: |
       # terraform workspace new dev
       # terraform workspace new prod
