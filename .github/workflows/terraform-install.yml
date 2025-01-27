@@ -12,7 +12,7 @@ on:
      - dev
      - prod
      - staging
-    
+   
 jobs:
  build-job:
   runs-on: ubuntu-latest
