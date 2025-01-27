@@ -43,7 +43,7 @@ jobs:
      run: terraform init
    # - name: install docs
    #   run: sudo snap install terraform-docs
-   - name: select terraform workspaces
+   # - name: select terraform workspaces
    - name: Select Terraform Workspace 
      run: | 
       terraform workspace show 
