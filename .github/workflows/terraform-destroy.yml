@@ -2,7 +2,7 @@ name: terraform destroy
 on:
  workflow_dispatch:
   inputs:
-   environments:
+   environment:
     description: 'please select the environments'
     default: dev
     required: true
@@ -29,6 +29,21 @@ jobs:
       terraform-version: 5.48.0  
    - name: terraform init
      run: terraform init
+   - name: check if workspace exists or not
+     run: |
+      workspace_new="${{ github.event.inputs.environment == 'dev' || 'dev' &&  github.event.inputs.environment == 'prod' || 'prod' }}" 
+      # workspace_new="${{ github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev' && 'dev' || 'dev' }}" 
+      terraform workspace list | grep -w "$workspace_new" || terraform workspace new "$workspace_new"
+     id: create_workspace
+     
+   - name: Select Terraform Workspace 
+     run: | 
+      workspace_new="${{ github.event.inputs.environment == 'dev' || 'dev' &&  github.event.inputs.environment == 'prod' || 'prod' }}" 
+     
+       # workspace_new="${{ github.ref == 'refs/heads/main' && 'prod' || github.ref == 'refs/heads/dev' && 'dev' || 'dev' }}" 
+       terraform workspace select "$workspace_new"
+     id: select_workspace
+     
    - name: terraform plan to destroy
      run: terraform plan -destroy -out=tfplan-destroy
    - name: terrform apply to destroy
