@@ -43,7 +43,7 @@ jobs:
    - name: initialize terraform
      run: |
       terraform init
-      echo "choosen environment is ${{ env.environment }} "
+      echo "choosen environment is ${{ github.event.inputs.environment }} "
    # - name: install docs
    #   run: sudo snap install terraform-docs
    # - name: select terraform workspaces
