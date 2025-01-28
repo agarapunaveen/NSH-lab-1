@@ -1,9 +1,9 @@
-/* variable "instance_type" {
+ variable "instance_type" {
     default = {
   dev = "t2.micro"
-  prod = "t3.medium"
+  prod = "t2.large"
     }
-} */
+} 
 
 variable "allocated_storage" {
     default = {
