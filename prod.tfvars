@@ -1,3 +1,3 @@
-variable instance_type{
-prod= "t3.medium"
+variable "instance_type"{
+default = "t3.medium"
 }
