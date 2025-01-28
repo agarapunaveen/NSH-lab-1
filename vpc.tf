@@ -141,7 +141,7 @@ resource "aws_security_group" "rds" {
   password = "your-secure-password-here"  # In production, use AWS Secrets Manager
 
   /*db_subnet_group_name   = aws_db_subnet_group.default.name */
-  vpc_security_group_ids = element(split(",",data.aws_ssm_parameter.public_subnet_ids.value),0)
+ /* vpc_security_group_ids = element(split(",",data.aws_ssm_parameter.public_subnet_ids.value),0) */
 
   skip_final_snapshot = true  # For development only. Use false in production
 
