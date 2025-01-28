@@ -44,9 +44,8 @@ jobs:
        terraform workspace select "$workspace_new"
      id: select_workspace
      
-   - name: terraform plan to destroy
-     run: terraform plan -destroy -out=tfplan-destroy
+ 
    - name: terrform apply to destroy
-     run: terraform apply -destroy -auto-approve tfplan-destroy
+     run: terraform destroy -auto-approve
   
  
