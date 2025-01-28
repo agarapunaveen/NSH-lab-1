@@ -111,7 +111,7 @@ source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
  resource "aws_security_group" "rds" {
   name        = "rds_security_group"
   description = "Security group for RDS instance"
-  vpc_id      = data.aws_ssm_parameter.vpc_id
+  vpc_id      = data.aws_ssm_parameter.vpc_id.value
 
   ingress {
     description     = "Allow MySQL traffic from EC2"
