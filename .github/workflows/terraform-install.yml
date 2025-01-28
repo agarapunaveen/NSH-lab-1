@@ -71,7 +71,7 @@ jobs:
      run: terraform plan '-var-file=${{ github.event.inputs.environment }}.tfvars' '-out=tfplan' 
 
    - name: apply terraform
-     run: terraform apply -var-file=${{ github.event.inputs.environment }}.tfvars
+     run: terraform apply -var-file=${{ github.event.inputs.environment }}.tfvars -auto-approve
      
    - name: Render terraform docs and push changes back to PR
      if: ${{ github.event_name == 'pull_request' }}
