@@ -107,3 +107,22 @@ source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
   is_peering = var.is_peering
 }
 
+# Create Security Group for RDS
+ resource "aws_security_group" "rds" {
+  name        = "rds_security_group"
+  description = "Security group for RDS instance"
+  vpc_id      = data.aws_ssm_parameter.vpc_id
+
+  ingress {
+    description     = "Allow MySQL traffic from EC2"
+    from_port       = 3306
+    to_port         = 3306
+    protocol        = "tcp"
+    # security_groups = [aws_security_group.allow_ssh.id]
+  } 
+
+  tags = {
+    Name = "rds-sg"
+  }
+} 
+
