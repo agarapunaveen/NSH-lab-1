@@ -108,7 +108,7 @@ source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
 }
 
 # Create Security Group for RDS
- resource "aws_security_group" "rds" {
+/* resource "aws_security_group" "rds" {
   name        = "rds_security_group_1"
   description = "Security group for RDS instance"
   vpc_id      = data.aws_ssm_parameter.vpc_id.value
@@ -124,5 +124,5 @@ source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
   tags = {
     Name = "rds-sg"
   }
-} 
+} */
 
