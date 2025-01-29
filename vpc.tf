@@ -1,5 +1,5 @@
 # Create VPC
-/*resource "aws_vpc" "main" {
+resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -7,10 +7,10 @@
   tags = {
     Name = "main-vpc"
   }
-} */
+} 
 
 # Create Public Subnet
-/* resource "aws_subnet" "public" {
+ resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
@@ -18,29 +18,29 @@
   tags = {
     Name = "public-subnet"
   }
-} */
+} 
 
 # Create Private Subnets for RDS
-/* resource "aws_subnet" "private_1" {
+ resource "aws_subnet" "private_1" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.2.0/24"
 
   tags = {
     Name = "private-subnet-1"
   }
-} */
+} 
 
-/* resource "aws_subnet" "private_2" {
+ resource "aws_subnet" "private_2" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.3.0/24"
 
   tags = {
     Name = "private-subnet-2"
   }
-} */
+} 
 
 # Create Security Group for RDS
-/* resource "aws_security_group" "rds" {
+ resource "aws_security_group" "rds" {
   name        = "rds_security_group"
   description = "Security group for RDS instance"
   vpc_id      = aws_vpc.main.id
@@ -56,10 +56,10 @@
   tags = {
     Name = "rds-sg"
   }
-} */
+} 
 
 
-/* resource "aws_db_subnet_group" "default" {
+ resource "aws_db_subnet_group" "default" {
   name        = "main-db-subnet-group-1"
   description = "Database subnet group"
   subnet_ids  = [aws_subnet.private_1.id, aws_subnet.private_2.id]
@@ -67,12 +67,12 @@
   tags = {
     Name = "main-db-subnet-group"
   }
-} */
+} 
 
 # Create DB Subnet Group
 
 
-/* resource "aws_db_instance" "main" {
+ resource "aws_db_instance" "main" {
   identifier        = "main-db-instance"
   engine            = "mysql"
   engine_version    = "8.0"
@@ -95,7 +95,7 @@
   tags = {
     Name = "main-db-instance"
   }
-} */
+} 
 
 /*module "vpc" {
 source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
@@ -107,9 +107,9 @@ source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
   is_peering = var.is_peering
 } */
 
-resource "aws_default_vpc" "default" {
+/*resource "aws_default_vpc" "default" {
 vpc_id=data.aws_vpc.default.id
-}
+}*/
 
 # Create Security Group for RDS
 /*resource "aws_security_group" "rds" {
