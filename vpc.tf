@@ -97,7 +97,7 @@
   }
 } */
 
-module "vpc" {
+/*module "vpc" {
 source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
   comman_tags = var.comman_tags
   project_name = var.project_name
@@ -105,6 +105,10 @@ source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
   aws_subnet_private = var.aws_subnet_private
   aws_subnet_database = var.aws_subnet_database
   is_peering = var.is_peering
+} */
+
+resource "aws_default_vpc" "default" {
+vpc_id=data.aws_vpc.default.id
 }
 
 # Create Security Group for RDS
