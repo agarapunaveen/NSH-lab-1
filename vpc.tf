@@ -112,7 +112,7 @@ vpc_id=data.aws_vpc.default.id
 }
 
 # Create Security Group for RDS
-resource "aws_security_group" "rds" {
+/*resource "aws_security_group" "rds" {
   name        = "rds_security_group_1"
   description = "Security group for RDS instance"
   vpc_id      = data.aws_ssm_parameter.vpc_id.value
@@ -128,12 +128,12 @@ resource "aws_security_group" "rds" {
   tags = {
     Name = "rds-sg"
   }
-} 
+} */
 
 # Create DB Subnet Group
 
 
- resource "aws_db_instance" "main" {
+ /*resource "aws_db_instance" "main" {
   identifier        = "main-db-instance"
   engine            = "mysql"
   engine_version    = "8.0"
@@ -156,4 +156,4 @@ resource "aws_security_group" "rds" {
   tags = {
     Name = "main-db-instance"
   }
-} 
+} */
