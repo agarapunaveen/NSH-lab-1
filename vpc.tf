@@ -40,7 +40,7 @@ resource "aws_vpc" "main" {
 } 
 
 # Create Security Group for RDS
- resource "aws_security_group" "rds" {
+/* resource "aws_security_group" "rds" {
   name        = "rds_security_group"
   description = "Security group for RDS instance"
   vpc_id      = aws_vpc.main.id
@@ -56,10 +56,10 @@ resource "aws_vpc" "main" {
   tags = {
     Name = "rds-sg"
   }
-} 
+} */
 
 
- resource "aws_db_subnet_group" "default" {
+ /*resource "aws_db_subnet_group" "default" {
   name        = "main-db-subnet-group-1"
   description = "Database subnet group"
   subnet_ids  = [aws_subnet.private_1.id, aws_subnet.private_2.id]
@@ -67,12 +67,12 @@ resource "aws_vpc" "main" {
   tags = {
     Name = "main-db-subnet-group"
   }
-} 
+} */
 
 # Create DB Subnet Group
 
 
- resource "aws_db_instance" "main" {
+/* resource "aws_db_instance" "main" {
   identifier        = "main-db-instance"
   engine            = "mysql"
   engine_version    = "8.0"
@@ -95,7 +95,7 @@ resource "aws_vpc" "main" {
   tags = {
     Name = "main-db-instance"
   }
-} 
+} */
 
 /*module "vpc" {
 source = "git::https://github.com/agarapunaveen/terraform.git?ref=master"
